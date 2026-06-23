@@ -41,76 +41,92 @@ function Registro() {
   }
 
   return (
-    <main className="registro-main">
+    <main id="registro" className="registro-main">
       <h1>Registrarse</h1>
       <p className="subtitle">Ingresá tus datos para crear tu cuenta</p>
-      <section className="form-container">
-        <form id="form" onSubmit={handleSubmit}>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="nombre">Nombre*</label>
-              <input type="text" id="nombre" name="nombre" required
-                placeholder="Nombre" value={form.nombre} onChange={handleChange} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="apellido">Apellido*</label>
-              <input type="text" id="apellido" name="apellido" required
-                placeholder="Apellido" value={form.apellido} onChange={handleChange} />
-            </div>
-          </div>
+      <section id="formulario-registro" className="form-container" aria-label="Formulario de registro">
+        <form id="form" onSubmit={handleSubmit} noValidate>
 
-          <div className="form-group">
-            <label htmlFor="email">Email*</label>
-            <input type="email" id="email" name="email" required
-              placeholder="tu@email.com" value={form.email} onChange={handleChange} />
-          </div>
-
-          <div className="form-group-label">
-            <p>Teléfono de contacto</p>
-          </div>
-          <div className="form-row">
-            <div className="form-group small">
-              <label htmlFor="codigoArea">Código de área*</label>
-              <input type="text" id="codigoArea" name="codigoArea" required
-                placeholder="Código de área" maxLength="4"
-                value={form.codigoArea} onChange={handleChange} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="telefono">Número de teléfono*</label>
-              <input type="tel" id="telefono" name="telefono" required
-                placeholder="Número de teléfono"
-                value={form.telefono} onChange={handleChange} />
-            </div>
-          </div>
-
-          <div className="form-row">
-            <div className="form-group password-group">
-              <label htmlFor="contrasena">Contraseña*</label>
-              <div className="password-input">
-                <input type={verContrasena ? 'text' : 'password'}
-                  id="contrasena" name="contrasena" required
-                  placeholder="Contraseña" value={form.contrasena} onChange={handleChange} />
-                <button type="button" className="toggle-password"
-                  onClick={() => setVerContrasena(!verContrasena)}>
-                  <i className={`fa-solid ${verContrasena ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-                </button>
+          <fieldset>
+            <legend className="visually-hidden">Datos personales</legend>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="nombre">Nombre*</label>
+                <input type="text" id="nombre" name="nombre" required
+                  placeholder="Nombre" value={form.nombre} onChange={handleChange}
+                  autoComplete="given-name" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="apellido">Apellido*</label>
+                <input type="text" id="apellido" name="apellido" required
+                  placeholder="Apellido" value={form.apellido} onChange={handleChange}
+                  autoComplete="family-name" />
               </div>
             </div>
-            <div className="form-group password-group">
-              <label htmlFor="repetirContrasena">Repetir contraseña*</label>
-              <div className="password-input">
-                <input type={verRepetir ? 'text' : 'password'}
-                  id="repetirContrasena" name="repetirContrasena" required
-                  placeholder="Repetir contraseña"
-                  value={form.repetirContrasena} onChange={handleChange} />
-                <button type="button" className="toggle-password"
-                  onClick={() => setVerRepetir(!verRepetir)}>
-                  <i className={`fa-solid ${verRepetir ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-                </button>
+
+            <div className="form-group">
+              <label htmlFor="email">Email*</label>
+              <input type="email" id="email" name="email" required
+                placeholder="tu@email.com" value={form.email} onChange={handleChange}
+                autoComplete="email" />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend className="form-group-label"><p>Teléfono de contacto</p></legend>
+            <div className="form-row">
+              <div className="form-group small">
+                <label htmlFor="codigoArea">Código de área*</label>
+                <input type="text" id="codigoArea" name="codigoArea" required
+                  placeholder="Código de área" maxLength="4"
+                  value={form.codigoArea} onChange={handleChange}
+                  autoComplete="tel-area-code" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="telefono">Número de teléfono*</label>
+                <input type="tel" id="telefono" name="telefono" required
+                  placeholder="Número de teléfono"
+                  value={form.telefono} onChange={handleChange}
+                  autoComplete="tel-local" />
               </div>
             </div>
-          </div>
+          </fieldset>
+
+          <fieldset>
+            <legend className="visually-hidden">Contraseña</legend>
+            <div className="form-row">
+              <div className="form-group password-group">
+                <label htmlFor="contrasena">Contraseña*</label>
+                <div className="password-input">
+                  <input type={verContrasena ? 'text' : 'password'}
+                    id="contrasena" name="contrasena" required
+                    placeholder="Contraseña" value={form.contrasena} onChange={handleChange}
+                    autoComplete="new-password" />
+                  <button type="button" className="toggle-password"
+                    onClick={() => setVerContrasena(!verContrasena)}
+                    aria-label={verContrasena ? 'Ocultar contraseña' : 'Mostrar contraseña'}>
+                    <i className={`fa-solid ${verContrasena ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+                  </button>
+                </div>
+              </div>
+              <div className="form-group password-group">
+                <label htmlFor="repetirContrasena">Repetir contraseña*</label>
+                <div className="password-input">
+                  <input type={verRepetir ? 'text' : 'password'}
+                    id="repetirContrasena" name="repetirContrasena" required
+                    placeholder="Repetir contraseña"
+                    value={form.repetirContrasena} onChange={handleChange}
+                    autoComplete="new-password" />
+                  <button type="button" className="toggle-password"
+                    onClick={() => setVerRepetir(!verRepetir)}
+                    aria-label={verRepetir ? 'Ocultar contraseña' : 'Mostrar contraseña'}>
+                    <i className={`fa-solid ${verRepetir ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </fieldset>
 
           <div className="form-check">
             <input type="checkbox" id="terminos" name="terminos"

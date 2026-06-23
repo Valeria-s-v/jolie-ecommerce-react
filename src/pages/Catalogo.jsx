@@ -14,20 +14,29 @@ const productos = [
 
 function Catalogo() {
   return (
-    <main className="catalogo">
-      <section className="productos">
+    <main id="catalogo" className="catalogo">
+
+      {/* Título de la sección */}
+      <section id="catalogo-header" aria-label="Encabezado del catálogo">
+        <h1>Catálogo</h1>
+        <p>Explorá toda nuestra colección</p>
+      </section>
+
+      {/* Listado de productos */}
+      <section id="catalogo-productos" className="productos" aria-label="Catálogo de productos">
         <div className="container2">
-          <div className="product-grid2">
+          <div className="product-grid2" role="list">
             {productos.map(p => (
-              <div key={p.id} className="product-card2">
+              <article key={p.id} className="product-card2" role="listitem">
                 <img src={`/src/assets/img/${p.imagen}`} alt={p.nombre} />
                 <h3>{p.nombre}</h3>
                 <p>${p.precio.toLocaleString()}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
+
     </main>
   )
 }
