@@ -15,17 +15,57 @@ function Registro() {
 
   const [verContrasena, setVerContrasena] = useState(false)
   const [verRepetir, setVerRepetir] = useState(false)
+  const [exito, setExito] = useState(false)
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
     setForm({ ...form, [name]: type === 'checkbox' ? checked : value })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Datos del formulario:', form)
-    alert('Formulario enviado correctamente!')
+  const handleSubmit = async (e) => {
+  e.preventDefault()
+
+  // Validar que las contraseñas coincidan
+  if (form.contrasena !== form.repetirContrasena) {
+    alert('Las contraseñas no coinciden')
+    return
   }
+
+  try {
+    // Verificar si el email ya existe
+    const res = await fetch(`http://localhost:3000/user?email=${form.email}`)
+    const usuariosExistentes = await res.json()
+
+    if (usuariosExistentes.length > 0) {
+      alert('Ya existe una cuenta con ese email')
+      return
+    }
+
+    // Crear el usuario
+    const nuevoUsuario = {
+      name: `${form.nombre} ${form.apellido}`,
+      email: form.email,
+      password: form.contrasena
+    }
+
+    const response = await fetch('http://localhost:3000/user', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(nuevoUsuario)
+    })
+
+    if (response.ok) {
+  const usuarioCreado = await response.json()
+  localStorage.setItem('usuarioJolie', JSON.stringify(usuarioCreado))
+  window.dispatchEvent(new Event('usuarioActualizado'))
+  setExito(true)
+  setTimeout(() => setExito(false), 4000)
+  handleReset()
+}
+  } catch (err) {
+    alert('Error al registrarse. Verificá que el servidor esté corriendo.')
+  }
+}
 
   const handleReset = () => {
     setForm({
@@ -42,8 +82,13 @@ function Registro() {
 
   return (
     <main id="registro" className="registro-main">
+
       <h1>Registrarse</h1>
-      <p className="subtitle">Ingresá tus datos para crear tu cuenta</p>
+      {exito && (
+        <div className="alerta-exito">
+          <i className="fa-solid fa-circle-check"></i> ¡Cuenta creada exitosamente! Bienvenida a Jolie.
+        </div>
+      )}
 
       <section id="formulario-registro" className="form-container" aria-label="Formulario de registro">
         <form id="form" onSubmit={handleSubmit} noValidate>
@@ -144,7 +189,7 @@ function Registro() {
           </div>
 
           <div className="login-link">
-            <p>¿Ya tenés cuenta? <a href="#">Inicia sesión acá</a></p>
+            <p>¿Ya tenés cuenta? <a href="/login">Inicia sesión acá</a></p>
           </div>
 
         </form>

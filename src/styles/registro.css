@@ -291,3 +291,28 @@
         padding: 10px 20px;
         font-size: 0.95rem;
     }
+
+    .error-mensaje {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.alerta-exito {
+  background-color: #f5f0e8;
+  border-left: 4px solid #b8960c;
+  color: #6b5a2e;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

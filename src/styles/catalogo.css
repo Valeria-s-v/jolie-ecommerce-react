@@ -71,3 +71,124 @@ main.catalogo {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
+
+.card-info {
+  padding: 1rem;
+  text-align: center;
+}
+
+.card-categoria {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+.card-precio {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.btn-carrito {
+  background-color: #b8960c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.3s;
+}
+
+.btn-carrito:hover {
+  background-color: #8a6e09;
+}
+
+/* Header del catálogo */
+.catalogo-header {
+  max-width: 1200px;
+  margin: 2rem auto 1.5rem;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+.catalogo-header h1 {
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin-bottom: 0.3rem;
+}
+
+.catalogo-header p {
+  color: #6b5a2e;
+  font-size: 1rem;
+}
+
+/* Bloque de controles */
+.productos-controles {
+  max-width: 1200px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
+}
+
+.controles-top {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.buscador {
+  flex: 1;
+  min-width: 220px;
+  padding: 0.7rem 1.2rem;
+  border-radius: 25px;
+  border: 1px solid #d8cdb8;
+  background-color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.buscador:focus {
+  border-color: #b8960c;
+}
+
+.ordenar {
+  padding: 0.7rem 1.2rem;
+  border-radius: 25px;
+  border: 1px solid #d8cdb8;
+  background-color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+  color: #6b5a2e;
+}
+
+/* Filtros por categoría */
+.filtros {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  background-color: transparent;
+  border: 1px solid #b8960c;
+  color: #6b5a2e;
+  padding: 0.45rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.filtro-btn:hover {
+  background-color: #f5f0e8;
+}
+
+.filtro-btn.active {
+  background-color: #b8960c;
+  color: #fff;
+  border-color: #b8960c;
+}
