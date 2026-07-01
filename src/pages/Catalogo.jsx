@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import Gallery from '../components/Gallery'
 import useProducts from '../hooks/useProducts'
 import '../styles/catalogo.css'
 
@@ -78,24 +79,8 @@ function Catalogo() {
       </section>
 
       <section id="listado-productos" className="productos" aria-label="Catálogo de productos">
-        {productosFiltrados.length > 0 ? (
-          <div className="product-grid2" role="list">
-            {productosFiltrados.map(p => (
-              <article key={p.id} className="product-card2" role="listitem">
-                <img src={p.image} alt={p.name} />
-                <div className="card-info">
-                  <span className="card-categoria">{p.category}</span>
-                  <h3>{p.name}</h3>
-                  <p className="card-precio">${p.price.toLocaleString('es-AR')}</p>
-                  <button className="btn-carrito">Agregar al carrito</button>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <p role="status" className="sin-resultados">No se encontraron productos.</p>
-        )}
-      </section>
+        <Gallery productos={productosFiltrados} />
+      </section>  
 
     </main>
   )

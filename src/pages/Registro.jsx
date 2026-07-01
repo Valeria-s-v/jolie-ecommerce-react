@@ -19,11 +19,13 @@ function Registro() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
+    console.log(`Input modificado -> ${name}: ${type === 'checkbox' ? checked : value}`)
     setForm({ ...form, [name]: type === 'checkbox' ? checked : value })
   }
 
   const handleSubmit = async (e) => {
   e.preventDefault()
+  console.log('Formulario de registro enviado con estos datos:', form)
 
   // Validar que las contraseñas coincidan
   if (form.contrasena !== form.repetirContrasena) {
@@ -68,6 +70,7 @@ function Registro() {
 }
 
   const handleReset = () => {
+    console.log('Formulario de registro reseteado')
     setForm({
       nombre: '',
       apellido: '',

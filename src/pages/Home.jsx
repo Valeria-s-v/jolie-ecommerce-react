@@ -1,3 +1,4 @@
+import Card from '../components/Card'
 import banner2 from '../assets/img/banner2.png'
 import bannerHome from '../assets/img/banner-home.jpg'
 import banner3 from '../assets/img/banner3.png'
@@ -9,6 +10,12 @@ import cartera from '../assets/img/cartera.jpg'
 import gafa from '../assets/img/gafa.jpg'
 
 function Home() {
+
+  const tendencias = [
+    { id: 1, nombre: 'Blusa Chic', precio: 29000, imagen: blusaChic, categoria: 'Ropa' },
+    { id: 2, nombre: 'Cartera', precio: 30000, imagen: cartera, categoria: 'Accesorios' },
+    { id: 3, nombre: 'Gafas de sol', precio: 56000, imagen: gafa, categoria: 'Accesorios' }
+  ]
   return (
     <main id="inicio">
 
@@ -86,23 +93,18 @@ function Home() {
           <h2 className="text-center">Tendencia 2026</h2>
         </div>
         <div className="container">
-          <div className="product-grid">
-            <article className="product-card">
-              <img src={blusaChic} alt="Blusa Chic - Tendencia 2026" />
-              <h3>Blusa Chic</h3>
-              <p>$29.000</p>
-            </article>
-            <article className="product-card">
-              <img src={cartera} alt="Cartera - Tendencia 2026" />
-              <h3>Cartera</h3>
-              <p>$30.000</p>
-            </article>
-            <article className="product-card">
-              <img src={gafa} alt="Gafas de sol - Tendencia 2026" />
-              <h3>Gafas de sol</h3>
-              <p>$56.000</p>
-            </article>
-          </div>
+         <div className="product-grid">
+            {tendencias.map((producto) => (
+              <Card
+                key={producto.id}
+                id={producto.id}
+                nombre={producto.nombre}
+                precio={producto.precio}
+                imagen={producto.imagen}
+                categoria={producto.categoria}
+              />
+            ))}
+        </div>
         </div>
       </section>
 
