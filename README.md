@@ -1,4 +1,4 @@
-# Jolie - E-commerce en React
+# Tienda Jolie - Ecommerce en React
 
 Trabajo Práctico Final (Opción A) - Migración de un proyecto maquetado en HTML/CSS a React.
 
