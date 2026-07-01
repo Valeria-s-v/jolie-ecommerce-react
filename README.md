@@ -13,15 +13,14 @@ Jolie es una tienda de ropa y accesorios. El proyecto incluye catálogo de produ
 
 ## 📁 Estructura del proyecto
 
-EcommerceReact/
-├── server/            → API local (json-server)
-├── src/
-│   ├── components/    → Componentes reutilizables (Navbar, Footer, Card, Gallery, Layout)
-│   ├── pages/          → Páginas de la app (Home, Catalogo, Registro, Login, Contact)
-│   ├── styles/          → Archivos CSS
-│   ├── assets/          → Imágenes
-│   └── hooks/           → Custom Hooks (useProducts)
-└── public/
+- **server/** → API local (json-server)
+- **src/**
+  - **components/** → Componentes reutilizables (Navbar, Footer, Card, Gallery, Layout)
+  - **pages/** → Páginas de la app (Home, Catalogo, Registro, Login, Contact)
+  - **styles/** → Archivos CSS
+  - **assets/** → Imágenes
+  - **hooks/** → Custom Hooks (useProducts)
+- **public/**
 
 ## 🚀 Cómo ejecutar el proyecto
 
@@ -29,37 +28,31 @@ Este proyecto tiene **dos partes que hay que levantar por separado y al mismo ti
 
 ### 1. Clonar el repositorio
 
-```bash
-git clone https://github.com/Valeria-s-v/jolie-ecommerce-react.git
-cd jolie-ecommerce-react
-```
+1. `git clone https://github.com/Valeria-s-v/jolie-ecommerce-react.git`
+2. `cd jolie-ecommerce-react`
 
 ### 2. Levantar la API (servidor local)
 
-Abrí una terminal y ejecutá:
+Abrí una terminal y ejecutá, en este orden:
 
-```bash
-cd server
-npm install
-npm run dev
-```
+1. `cd server`
+2. `npm install`
+3. `npm run dev`
 
 Esto deja la API corriendo en `http://localhost:3000`. **Dejá esta terminal abierta.**
 
 ### 3. Levantar el frontend
 
-Abrí **otra terminal nueva** (sin cerrar la anterior), parado en la carpeta raíz del proyecto:
+Abrí **otra terminal nueva** (sin cerrar la anterior), parado en la carpeta raíz del proyecto, y ejecutá:
 
-```bash
-npm install
-npm run dev
-```
+1. `npm install`
+2. `npm run dev`
 
 Esto va a mostrar una URL, generalmente `http://localhost:5173`. Abrila en el navegador.
 
 ### ✅ Resumen
 
-| Terminal | Comando | Puerto |
+| Terminal | Comandos | Puerto |
 |---|---|---|
 | Terminal 1 (API) | `cd server` → `npm install` → `npm run dev` | 3000 |
 | Terminal 2 (Frontend) | `npm install` → `npm run dev` | 5173 |
@@ -73,3 +66,8 @@ Las dos tienen que quedar corriendo al mismo tiempo para que la app funcione com
 - `/registro` — Registro de usuarios (requiere la API corriendo)
 - `/login` — Inicio de sesión
 - `/contacto` — Formulario de contacto
+
+---
+
+**Alumna:** Valeria Villegas
+Universidad Tecnológica Nacional (UTN.BA) — Curso Inicial Front-End, Centro de e-Learning.
